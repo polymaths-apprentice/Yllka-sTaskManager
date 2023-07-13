@@ -1,0 +1,191 @@
+*{padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+}
+/* .App {
+  background-color:antiquewhite;
+  box-shadow: 3px 0 12px #007200 ;
+  border-radius: 10px;
+  padding: 20px;
+  width: 100vw;
+  height: 100vh;
+} */
+/* .ListHeader{
+width: 100%;
+display: flex;
+justify-content: space-between;
+border-bottom: rgba(0, 0, 0, 0.25);
+color: #007200;
+} */
+.buttonContainer,.info{
+  display: flex;
+  align-items: center;
+}
+/* .buttonContainer>button{
+  margin: 0 5px;
+  padding: 5px 10px;
+  border-radius: 12px;
+  border: none;
+  box-shadow: 1px 0 12px #007200 ;
+  background-color: transparent;
+  color: #007200;
+  cursor: pointer;
+} */
+.ListItem{
+  width: 100%;
+  margin: 10px 0;
+  padding: 20px;
+  border-radius: 10px;
+  color: #007200;
+  box-shadow: 1px 0 12px #007200 ;
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit,.delete{
+  margin: 0 5px;
+  padding: 5px 10px;
+  border-radius: 12px;
+  border: 1px solid #007200;
+  box-shadow: 0.5px 0 0px #007200 ;
+  background-color: transparent;
+  color: antiquewhite;
+  font-size: 20px;
+  cursor: pointer;
+}
+.edit:hover,.delete:hover,.buttonContainer>button:hover{
+  background-color: antiquewhite;
+  color:  #007200;
+}
+.edit:active,.delete:active,.buttonContainer>button:active{
+  background-color: #007200;
+  color:  antiquewhite;
+  box-shadow: 1px 0 0px #007200 ;
+}
+.Modal{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #002200;
+  opacity: 0.9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mod{
+  opacity: 1;
+  width: 60%;
+  background-color: antiquewhite;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 1px 0 0px #007200;
+}
+
+/* .formTitle>button:active{
+  color: red;
+}
+.mod form{
+  display: flex;
+  flex-direction: column;
+}
+.mod label{
+  font-size: 13px;
+}
+input{
+  position: relative;
+  margin: 11px 0;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1.5px solid #007200;
+  color: #007200;
+  background-color: transparent;
+} */
+.Auth{
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+}
+.containerr{
+  width: 500px;
+  background-color: #007200;
+  color: #007200;
+}
+.containerr form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 300px;
+  padding: 20px;
+  background-color: antiquewhite;
+}
+
+ input[type="submit"]{
+  margin: 11px 0;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1.5px solid #007200;
+  color: #007200;
+  background-color: transparent;
+  cursor: pointer;
+  box-shadow: 1px 0 1px #007200;
+}
+input[type="submit"]:hover{
+  box-shadow: 1px 0 0px #007200;
+  background-color: #007200;
+  color: antiquewhite;
+}
+/*
+#category{
+  position: relative;
+  margin: 11px 0;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1.5px solid #007200;
+  color: #007200;
+  background-color: transparent;
+} */
+.notCompleted{
+  display: none;
+}
+
+/* The DTM */
+
+
+
+.messageDTM{
+  font-size: 30px;
+}
+.mainDTM{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #002200;
+  opacity: 0.9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.miniDTM{
+  opacity: 1;
+  width: 60%;
+  background-color: antiquewhite;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 1px 0 0px #007200;
+}
+.miniDTM>button{
+  background-color: #007200;
+  color: antiquewhite;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  padding: 5px 20px;
+  margin-top: 30px;
+  border-radius: 5px;
+}
