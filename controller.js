@@ -1,9 +1,8 @@
-const { query } = require('express');
 const pool = require('./database');
 const queries = require('./queries');
 const { v4: uuidv4 } = require('uuid');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+
+
 
 const getTasks = async (req, res) => {
   const { username } = req.params;
@@ -16,13 +15,14 @@ const getTasks = async (req, res) => {
   }
 };
 
+
 const addTask = async (req, res) => {
   try {
-    const { task_name, due_date, username, category } = req.body;
+    const { task_name, due_date, username, category,description } = req.body;
 
     const task_id = uuidv4();
 
-    await pool.query(queries.addTask, [task_id, task_name, due_date, username,category]);
+    await pool.query(queries.addTask, [task_id, task_name, due_date, username,category,description]);
 
     res.status(200).json({ message: 'Task added successfully.' });
   } catch (err) {
@@ -33,9 +33,9 @@ const addTask = async (req, res) => {
 
 const editTask = async (req, res) => {
   const { task_id } = req.params;
-  const { task_name, due_date, username ,category} = req.body;
+  const { task_name, due_date, username ,category, completed,description} = req.body;
   try {
-    await pool.query(queries.editTask, [task_name, due_date, username, category,task_id]);
+    await pool.query(queries.editTask, [task_name, due_date, username, category,completed,description,task_id]);
     res.json({ message: 'Task updated successfully.' });
   } catch (err) {
     console.error(err);
@@ -58,9 +58,7 @@ const register = async (req, res) => {
   const { username } = req.body;
   try {
     await pool.query(queries.register, [username]);
-
-    const token = jwt.sign({ username }, 'secret', { expiresIn: '1hr' });
-    res.json({ username, token });
+    res.json({ username});
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'An error occurred during registration.' });
@@ -78,16 +76,11 @@ const getCategories = async (req, res) => {
   }
 };
 
-module.exports = { register };
-
-
-
-
 module.exports = {
+  register,
   getTasks,
   addTask,
   editTask,
   deleteTask,
-  register,
   getCategories
 };
