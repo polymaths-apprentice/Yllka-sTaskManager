@@ -1,64 +1,61 @@
-const pool = require('./database');
-const queries = require('./queries');
-const { v4: uuidv4 } = require('uuid');
+const CategoryServices = require('./categoryServices');
+const RegisterService = require('./registerService');
+const TaskService = require('./taskServices');
 
-
+const taskService = new TaskService();
+const categoryService = new CategoryServices();
+const registerService = new RegisterService();
 
 const getTasks = async (req, res) => {
   const { username } = req.params;
   try {
-    const tasks = await pool.query(queries.getTasks, [username]);
-    res.json(tasks.rows);
+    const tasks = await taskService.getTasks(username);
+    res.json(tasks);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'An error occurred while fetching tasks.' });
+    res.status(500).json({ error: err.message });
   }
 };
 
-
 const addTask = async (req, res) => {
   try {
-    const { task_name, due_date, username, category,description } = req.body;
-
-    const task_id = uuidv4();
-
-    await pool.query(queries.addTask, [task_id, task_name, due_date, username,category,description]);
-
+    const taskData = req.body;
+    await taskService.addTask(taskData);
     res.status(200).json({ message: 'Task added successfully.' });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'An error occurred while adding the task.' });
+    res.status(500).json({ error: err.message });
   }
 };
 
 const editTask = async (req, res) => {
   const { task_id } = req.params;
-  const { task_name, due_date, username ,category, completed,description} = req.body;
+  const taskData = req.body;
   try {
-    await pool.query(queries.editTask, [task_name, due_date, username, category,completed,description,task_id]);
+    await taskService.editTask({ ...taskData, task_id });
     res.json({ message: 'Task updated successfully.' });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'An error occurred while editing the task.' });
+    res.status(500).json({ error: err.message });
   }
 };
 
 const deleteTask = async (req, res) => {
   const { task_id } = req.params;
   try {
-    await pool.query(queries.deleteTask, [task_id]);
+    await taskService.deleteTask(task_id);
     res.json({ message: 'Task deleted successfully.' });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'An error occurred while deleting the task.' });
+    res.status(500).json({ error: err.message });
   }
 };
 
 const register = async (req, res) => {
   const { username } = req.body;
   try {
-    await pool.query(queries.register, [username]);
-    res.json({ username});
+    await registerService.register(username);
+    res.json({ username });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'An error occurred during registration.' });
@@ -67,12 +64,11 @@ const register = async (req, res) => {
 
 const getCategories = async (req, res) => {
   try {
-    const result = await pool.query(queries.getCategory);
-    const categories = result.rows.map(row => row.category);
+   const categories = await categoryService.getCategories();
     res.json(categories);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'An error occurred while fetching categories.' });
+    res.status(500).json({ error: err.message });
   }
 };
 

@@ -1,5 +1,5 @@
 const express = require('express');
-const tRoutes = require('./routes/routes');
+const router = require('./routes');
 const cors = require('cors');
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use('/', tRoutes);
+app.use('/', router);
 
 const options = {
   definition: {
