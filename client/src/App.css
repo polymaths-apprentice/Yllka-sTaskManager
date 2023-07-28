@@ -85,25 +85,6 @@ color: #007200;
   box-shadow: 1px 0 0px #007200;
 }
 
-/* .formTitle>button:active{
-  color: red;
-}
-.mod form{
-  display: flex;
-  flex-direction: column;
-}
-.mod label{
-  font-size: 13px;
-}
-input{
-  position: relative;
-  margin: 11px 0;
-  padding: 12px 16px;
-  border-radius: 12px;
-  border: 1.5px solid #007200;
-  color: #007200;
-  background-color: transparent;
-} */
 .Auth{
   display: flex;
   justify-content: center;
@@ -137,55 +118,4 @@ input[type="submit"]:hover{
   box-shadow: 1px 0 0px #007200;
   background-color: #007200;
   color: antiquewhite;
-}
-/*
-#category{
-  position: relative;
-  margin: 11px 0;
-  padding: 12px 16px;
-  border-radius: 12px;
-  border: 1.5px solid #007200;
-  color: #007200;
-  background-color: transparent;
-} */
-.notCompleted{
-  display: none;
-}
-
-/* The DTM */
-
-
-
-.messageDTM{
-  font-size: 30px;
-}
-.mainDTM{
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #002200;
-  opacity: 0.9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.miniDTM{
-  opacity: 1;
-  width: 60%;
-  background-color: antiquewhite;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 1px 0 0px #007200;
-}
-.miniDTM>button{
-  background-color: #007200;
-  color: antiquewhite;
-  font-size: 20px;
-  border: none;
-  cursor: pointer;
-  padding: 5px 20px;
-  margin-top: 30px;
-  border-radius: 5px;
 }
